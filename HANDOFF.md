@@ -30,35 +30,22 @@ using the old code only as a specification and the old database as content.
 | Ref | Contents |
 | --- | --- |
 | `main` @ `961086a` | Milestone 1 merged (PR #1, commit `586b482`) |
-| CI fix (not yet pushed) | One commit, "Fix CI: code style (Pint) and static analysis types" |
+| `ci-fix` (PR #2) | CI fix, this handoff file, and fixes for the first full test run. CI is green |
 
-**First task in a new session:** the CI checks on PR #1 failed. The fix exists
-as a commit in `religious-ci-fix.bundle` (the owner has it; it may also be
-pushed already as branch `ci-fix`). If it is not on GitHub yet:
+PR #2 makes `composer ci:check` pass (Pint, PHPStan level 7 on all of `app/`,
+79 tests on SQLite). Merge it before starting new work. Besides the Pint and
+PHPDoc fixes it contains:
 
-```bash
-git checkout main && git pull
-git fetch /path/to/religious-ci-fix.bundle milestone-1:ci-fix
-git push -u origin ci-fix   # then open a PR into main
-```
+- `NewWorldCommand`: no nullsafe access on the left of `??` (PHPStan).
+- `ContentImporter`: clears `parent_slug` in `resource_types` and `activities`
+  before emptying them. SQLite keeps foreign keys on inside a transaction and
+  checks `RESTRICT` row by row, so `game:import-legacy --fresh` failed.
+- `AdminPanelTest`: admin tables are paginated (10 rows), so the test looks
+  records up through the table search.
 
-If the bundle is not available, redo the fix: run `vendor/bin/pint`, then
-`composer types:check` and fix what PHPStan (Larastan, level 7) reports.
-What the fix already contained:
-
-- Pint formatting on 21 files.
-- `LegacyMap::REGIONS` and `TRAIT_APPLIES_TO` PHPDoc keys are `int` (PHP turns
-  numeric string keys into ints).
-- `DesignContent::resourceTypes()` wrapped in `array_values()`.
-- Commands validate `argument()` / `option()` values before use.
-- `AdminPanelProvider` uses `PreventRequestForgery` directly (`VerifyCsrfToken`
-  is a deprecated alias in Laravel 13).
-
-**Not yet verified anywhere:** Larastan on the Laravel-side files (models,
-commands, Filament resources) and the Laravel feature tests. The first session
-had no Packagist access and no Docker, so only the framework-independent code
-was run (28 unit tests, a SQLite load test of all content with foreign keys on,
-PHPStan level 7 on `app/Legacy`, `app/Content`, `app/Game/Clock`, `TickPlan`).
+**Still not verified:** the Docker setup on MariaDB, end to end. Claude Code
+sessions cannot reach Packagist, so PHP checks run only in GitHub Actions:
+push a branch and read the run with `gh run view <id> --log-failed`.
 
 ## 3. How to run
 
@@ -144,7 +131,7 @@ Everything below is in the design document; this is the short version.
 
 ## 6. Next steps
 
-1. Get the CI fix onto GitHub and make `composer ci:check` pass (section 2).
+1. Merge PR #2 (CI is green).
 2. Run the Docker setup once end to end; import the original Latin-1 dump with
    `php artisan game:import-legacy --fresh` to restore accents.
 3. Commit the `composer.lock` created by the first install.
@@ -158,4 +145,4 @@ Everything below is in the design document; this is the short version.
 
 - Decisions are recorded in the design document as they are made.
 - Work has gone to `Dutchy78/Religious` through a branch and pull request
-  (PR #1 for Milestone 1).
+  (PR #1 for Milestone 1, PR #2 for the CI fix).
