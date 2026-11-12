@@ -31,9 +31,7 @@ final class LegacyContentMapper
     /** @var list<string> */
     private array $warnings = [];
 
-    public function __construct(private readonly SqlDumpReader $reader)
-    {
-    }
+    public function __construct(private readonly SqlDumpReader $reader) {}
 
     /** @return list<string> */
     public function warnings(): array

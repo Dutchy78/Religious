@@ -14,8 +14,8 @@ use App\Filament\Resources\BuildingTypes\Pages\ManageBuildingTypes;
 use App\Models\Content\BuildingType;
 use BackedEnum;
 use Filament\Actions\EditAction;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\IconColumn;
@@ -34,9 +34,9 @@ class BuildingTypeResource extends Resource
 {
     protected static ?string $model = BuildingType::class;
 
-    protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-building-library';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-building-library';
 
-    protected static string | UnitEnum | null $navigationGroup = 'Economy';
+    protected static string|UnitEnum|null $navigationGroup = 'Economy';
 
     protected static ?int $navigationSort = 1;
 

@@ -15,8 +15,8 @@ use App\Models\Content\Activity;
 use BackedEnum;
 use Filament\Actions\EditAction;
 use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\IconColumn;
@@ -46,9 +46,9 @@ class ActivityResource extends Resource
 
     protected static ?string $model = Activity::class;
 
-    protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-wrench-screwdriver';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-wrench-screwdriver';
 
-    protected static string | UnitEnum | null $navigationGroup = 'Monks';
+    protected static string|UnitEnum|null $navigationGroup = 'Monks';
 
     protected static ?int $navigationSort = 3;
 

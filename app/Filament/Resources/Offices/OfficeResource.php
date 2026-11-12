@@ -14,8 +14,8 @@ use App\Filament\Resources\Offices\Pages\ManageOffices;
 use App\Models\Content\Office;
 use BackedEnum;
 use Filament\Actions\EditAction;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
@@ -32,9 +32,9 @@ class OfficeResource extends Resource
 {
     protected static ?string $model = Office::class;
 
-    protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-key';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-key';
 
-    protected static string | UnitEnum | null $navigationGroup = 'World';
+    protected static string|UnitEnum|null $navigationGroup = 'World';
 
     protected static ?int $navigationSort = 4;
 

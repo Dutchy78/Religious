@@ -26,6 +26,5 @@ final class GameHourProcessed
     public function __construct(
         public readonly GameTime $time,
         public readonly int $worldClockId,
-    ) {
-    }
+    ) {}
 }

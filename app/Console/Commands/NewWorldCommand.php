@@ -35,7 +35,8 @@ class NewWorldCommand extends Command
             return self::FAILURE;
         }
 
-        $speed = (float) $this->option('speed');
+        $option = $this->option('speed');
+        $speed = is_numeric($option) ? (float) $option : 0.0;
 
         if ($speed <= 0) {
             $this->error('--speed must be positive.');

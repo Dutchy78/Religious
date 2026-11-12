@@ -34,9 +34,9 @@ class ResourceTypeResource extends Resource
 {
     protected static ?string $model = ResourceType::class;
 
-    protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-cube';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-cube';
 
-    protected static string | UnitEnum | null $navigationGroup = 'Economy';
+    protected static string|UnitEnum|null $navigationGroup = 'Economy';
 
     protected static ?int $navigationSort = 2;
 

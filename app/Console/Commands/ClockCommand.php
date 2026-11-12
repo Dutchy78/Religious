@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace App\Console\Commands;
 
+use App\Game\Clock\GameTime;
 use App\Models\WorldClock;
 use Illuminate\Console\Command;
 use Illuminate\Support\Carbon;
@@ -46,7 +47,7 @@ class ClockCommand extends Command
             ['Game time', $now->format()],
             ['Season', $now->season()],
             ['Next', $next->period().' at '.$nextReal->format('H:i T')],
-            ['Last processed', $clock->last_processed_hour === null ? 'never' : (new \App\Game\Clock\GameTime($clock->last_processed_hour))->format()],
+            ['Last processed', $clock->last_processed_hour === null ? 'never' : (new GameTime($clock->last_processed_hour))->format()],
         ]);
 
         return self::SUCCESS;

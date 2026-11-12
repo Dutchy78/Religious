@@ -36,9 +36,7 @@ final class SqlDumpReader
 
     private string $sourceEncoding = 'UTF-8';
 
-    private function __construct()
-    {
-    }
+    private function __construct() {}
 
     public static function fromFile(string $path): self
     {
@@ -141,7 +139,7 @@ final class SqlDumpReader
 
             if (isset($m[2]) && $m[2][1] !== -1 && $m[2][0] !== '') {
                 $columns = array_map(
-                    fn (string $c): string => trim($c, " `"),
+                    fn (string $c): string => trim($c, ' `'),
                     explode(',', $m[2][0]),
                 );
             }

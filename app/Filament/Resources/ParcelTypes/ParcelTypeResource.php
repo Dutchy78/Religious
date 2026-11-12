@@ -30,9 +30,9 @@ class ParcelTypeResource extends Resource
 {
     protected static ?string $model = ParcelType::class;
 
-    protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-squares-2x2';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-squares-2x2';
 
-    protected static string | UnitEnum | null $navigationGroup = 'World';
+    protected static string|UnitEnum|null $navigationGroup = 'World';
 
     protected static ?int $navigationSort = 5;
 

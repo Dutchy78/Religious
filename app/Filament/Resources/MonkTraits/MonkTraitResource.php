@@ -32,9 +32,9 @@ class MonkTraitResource extends Resource
 {
     protected static ?string $model = MonkTrait::class;
 
-    protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-sparkles';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-sparkles';
 
-    protected static string | UnitEnum | null $navigationGroup = 'Monks';
+    protected static string|UnitEnum|null $navigationGroup = 'Monks';
 
     protected static ?int $navigationSort = 1;
 

@@ -31,9 +31,9 @@ class MonasticOrderResource extends Resource
 {
     protected static ?string $model = MonasticOrder::class;
 
-    protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-flag';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-flag';
 
-    protected static string | UnitEnum | null $navigationGroup = 'World';
+    protected static string|UnitEnum|null $navigationGroup = 'World';
 
     protected static ?int $navigationSort = 1;
 

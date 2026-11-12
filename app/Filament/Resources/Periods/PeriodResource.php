@@ -31,9 +31,9 @@ class PeriodResource extends Resource
 {
     protected static ?string $model = Period::class;
 
-    protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-clock';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-clock';
 
-    protected static string | UnitEnum | null $navigationGroup = 'World';
+    protected static string|UnitEnum|null $navigationGroup = 'World';
 
     protected static ?int $navigationSort = 3;
 
