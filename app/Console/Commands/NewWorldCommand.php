@@ -49,7 +49,7 @@ class NewWorldCommand extends Command
             : WorldClockMath::nextAlignedEpoch(Carbon::now(), config('game.timezone'));
 
         $clock = WorldClock::query()->create([
-            'round_number' => ($existing?->round_number ?? 0) + 1,
+            'round_number' => ($existing->round_number ?? 0) + 1,
             'epoch_at' => $epoch,
             'start_game_hour' => GameTime::roundStart()->hour,
             'game_hours_per_real_hour' => $speed,
