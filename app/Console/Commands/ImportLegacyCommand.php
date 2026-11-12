@@ -34,7 +34,8 @@ class ImportLegacyCommand extends Command
             return self::SUCCESS;
         }
 
-        $path = $this->argument('path') ?: database_path('legacy/religious_db.sql');
+        $argument = $this->argument('path');
+        $path = is_string($argument) && $argument !== '' ? $argument : database_path('legacy/religious_db.sql');
 
         try {
             $reader = SqlDumpReader::fromFile($path);

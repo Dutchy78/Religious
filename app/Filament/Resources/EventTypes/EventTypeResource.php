@@ -14,8 +14,8 @@ use App\Filament\Resources\EventTypes\Pages\ManageEventTypes;
 use App\Models\Content\EventType;
 use BackedEnum;
 use Filament\Actions\EditAction;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\IconColumn;
@@ -33,9 +33,9 @@ class EventTypeResource extends Resource
 {
     protected static ?string $model = EventType::class;
 
-    protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-bolt';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-bolt';
 
-    protected static string | UnitEnum | null $navigationGroup = 'Events & messages';
+    protected static string|UnitEnum|null $navigationGroup = 'Events & messages';
 
     protected static ?int $navigationSort = 1;
 

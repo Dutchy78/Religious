@@ -30,9 +30,9 @@ class MessageTypeResource extends Resource
 {
     protected static ?string $model = MessageType::class;
 
-    protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-envelope';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-envelope';
 
-    protected static string | UnitEnum | null $navigationGroup = 'Events & messages';
+    protected static string|UnitEnum|null $navigationGroup = 'Events & messages';
 
     protected static ?int $navigationSort = 2;
 

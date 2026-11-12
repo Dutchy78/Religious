@@ -14,8 +14,8 @@ use App\Filament\Resources\Translations\Pages\ManageTranslations;
 use App\Models\Content\Translation;
 use BackedEnum;
 use Filament\Actions\EditAction;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
@@ -32,9 +32,9 @@ class TranslationResource extends Resource
 {
     protected static ?string $model = Translation::class;
 
-    protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-language';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-language';
 
-    protected static string | UnitEnum | null $navigationGroup = 'Reference';
+    protected static string|UnitEnum|null $navigationGroup = 'Reference';
 
     protected static ?int $navigationSort = 1;
 

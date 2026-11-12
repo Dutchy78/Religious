@@ -299,7 +299,11 @@ final class LegacyMap
         'dom' => ['dominicans', 'Dominicans'],
     ];
 
-    /** @var array<string, array{0: string, 1: string}> */
+    /**
+     * Keyed by the original numeric region id (PHP stores '1' as int 1).
+     *
+     * @var array<int, array{0: string, 1: string}>
+     */
     public const REGIONS = [
         '1' => ['navarra', 'Navarra'],
         '2' => ['castilla_y_leon', 'Kingdom of Castile and León'],
@@ -346,7 +350,7 @@ final class LegacyMap
         'venefe' => ['sale_completed', 'Sale completed', 'Your sale of :p1 :p2 of :p3 is complete.'],
     ];
 
-    /** @var array<string, string> legacy APLICABLE_A => applies_to */
+    /** @var array<int, string> legacy APLICABLE_A (numeric) => applies_to */
     public const TRAIT_APPLIES_TO = [
         '3' => 'monastery',
         '4' => 'monk',

@@ -24,6 +24,12 @@ use RuntimeException;
  */
 final class ContentImporter
 {
+    /** Content tables with a parent column pointing at the same table. */
+    private const SELF_REFERENCING = [
+        'resource_types' => 'parent_slug',
+        'activities' => 'parent_slug',
+    ];
+
     /** @return array<string, int> rows written per table */
     public function import(ContentSet $set, bool $replace = false): array
     {
@@ -44,6 +50,13 @@ final class ContentImporter
         // switch wraps the transaction. Rows are also ordered parents first.
         Schema::withoutForeignKeyConstraints(function () use ($set, $now, &$written): void {
             DB::transaction(function () use ($set, $now, &$written): void {
+                // Foreign keys stay on inside a transaction on SQLite (and in
+                // tests), and RESTRICT is checked row by row, so a table that
+                // points at itself cannot simply be emptied: unlink parents first.
+                foreach (self::SELF_REFERENCING as $table => $column) {
+                    DB::table($table)->update([$column => null]);
+                }
+
                 foreach (array_reverse(ContentSet::TABLE_ORDER) as $table) {
                     if ($table === 'translations') {
                         DB::table($table)->where('source', '!=', Translation::SOURCE_MANUAL)->delete();

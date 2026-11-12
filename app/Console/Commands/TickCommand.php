@@ -23,7 +23,8 @@ class TickCommand extends Command
 
     public function handle(TickRunner $runner): int
     {
-        $max = (int) $this->option('max-hours') ?: TickPlan::DEFAULT_MAX_HOURS_PER_RUN;
+        $option = $this->option('max-hours');
+        $max = is_numeric($option) && (int) $option > 0 ? (int) $option : TickPlan::DEFAULT_MAX_HOURS_PER_RUN;
         $processed = $runner->run(maxHours: $max);
 
         if ($processed === null) {

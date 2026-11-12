@@ -225,10 +225,10 @@ final class DesignContent
             ['vines', 'Vines', 'plantable', 'unit', 0],
         ];
 
-        return array_map(fn (array $r): array => [
+        return array_values(array_map(fn (array $r): array => [
             'slug' => $r[0], 'legacy_code' => null, 'name' => $r[1], 'parent_slug' => $r[2], 'unit_slug' => $r[3],
             'shelf_life_hours' => $r[4], 'is_original' => false,
-        ], $new);
+        ], $new));
     }
 
     /** @return list<array<string, mixed>> */
